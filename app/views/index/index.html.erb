@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" 
+   "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta name="Description" content="Monitoring your bandwidth" />
+<meta name="Keywords" content="Monitor,Bandwidth," />
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta name="Distribution" content="Global" />
+<meta name="Author" content="Bruno Freitas - bmsatierf (at) gmail (dot) com" />
+<meta name="Robots" content="index,follow" />
+<%= stylesheet_link_tag 'main' %>
+<title>ODP</title>
+</head>
+<body>
+<div id="wrap-header">
+	<!-- Menu -->
+	<div id="header">
+		<h1 id="logo-text">ODP</h1>
+		<h2 id="slogan">"Office Download Prevention ;)"</h2>
+	</div>
+</div>
+<div id="content">
+	<table id="statistics" cellpadding="0" cellspacing="0" align="center">
+		<tr>
+			<th>Usuário</th>
+			<th>E-mail</th>
+			<th>Baixou até agora</th>
+			<th>Enviou até agora</th>
+			<th>Baixando em</th>
+			<th>Enviando em</th>
+		</tr>
+		
+		<% @network.each do |ip, in_and_out| %>
+			<% traffic_in, download, traffic_out, upload, email = in_and_out %>
+			<tr class="<%= cycle("rowOn", "rowOff") %>">
+				<td><%= avatar_for email %></td>
+				<td><%= email %> <br/> <%= ip %></td>
+				<td><%= number_to_human_size(traffic_in) %></td>
+				<td><%= number_to_human_size(traffic_out) %></td>
+				<td><%= '%.2f' % download %> kB/s</td>
+				<td><%= '%.2f' % upload %> kB/s</td>
+			</tr>
+		<% end %>
+	</table>
+</div>
+</body>
+</html>

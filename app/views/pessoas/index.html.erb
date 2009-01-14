@@ -1,0 +1,22 @@
+<h1>Listing pessoas</h1>
+
+<table>
+  <tr>
+    <th>Email</th>
+    <th>Ip</th>
+  </tr>
+
+<% for pessoa in @pessoas %>
+  <tr>
+    <td><%=h pessoa.email %></td>
+    <td><%=h pessoa.ip %></td>
+    <td><%= link_to 'Show', pessoa %></td>
+    <td><%= link_to 'Edit', edit_pessoa_path(pessoa) %></td>
+    <td><%= link_to 'Destroy', pessoa, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New pessoa', new_pessoa_path %>

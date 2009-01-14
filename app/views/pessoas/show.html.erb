@@ -1,0 +1,13 @@
+<p>
+  <b>Email:</b>
+  <%=h @pessoa.email %>
+</p>
+
+<p>
+  <b>Ip:</b>
+  <%=h @pessoa.ip %>
+</p>
+
+
+<%= link_to 'Edit', edit_pessoa_path(@pessoa) %> |
+<%= link_to 'Back', pessoas_path %>
