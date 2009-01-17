@@ -1,0 +1,3 @@
+[submodule "lib/blamewidth"]
+	path = lib/blamewidth
+	url = git@github.com:luisbebop/blamewidth.git
