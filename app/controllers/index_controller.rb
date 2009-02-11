@@ -1,4 +1,6 @@
 class IndexController < ApplicationController
+  before_filter :authenticate
+  
   def index
     b = Blamewidth.instance()
     
@@ -11,9 +13,10 @@ class IndexController < ApplicationController
                         hash
                       end
     
-    # Put your ssh username and password here ...
+    # Setup ip, username and password in /servers
     # setup connection and ips to analyse.
-    b.setup('192.168.0.1', 'root', 'put_here_your_password',array_of_ips)
+    server = Server.find(:first)
+    b.setup(server.ip, server.username, server.password ,array_of_ips)
     
     # get a nested array with key 'ip' and values in an array with [bytes in, bytes out, download speed, upload speed]
     network_data = b.sort_traffic_and_speed(:download).reverse

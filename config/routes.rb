@@ -1,5 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :servers
+
   map.resources :pessoas
+  map.resources :login
 
   # The priority is based upon order of creation: first created -> highest priority.
 
@@ -42,4 +45,5 @@ ActionController::Routing::Routes.draw do |map|
   # consider removing the them or commenting them out if you're using named routes and resources.
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
+  
 end

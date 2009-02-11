@@ -18,3 +18,7 @@ To do list
 * Improve layout for pessoas views
 
 * Improve layout for index view
+
+* Create a relationship between servers and people
+
+* Use an authentication and authorization plugin

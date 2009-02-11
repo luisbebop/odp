@@ -1,0 +1,9 @@
+<div class="login">
+	<p>
+		<%= error_messages_for :login %>
+		<% form_for(:login) do |f| %>
+			Password: <%= f.text_field :password %>
+			<%= f.submit "Login" %>
+		<% end %>
+	</p>
+</div>
