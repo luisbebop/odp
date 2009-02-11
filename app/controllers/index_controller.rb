@@ -17,10 +17,14 @@ class IndexController < ApplicationController
     # setup connection and ips to analyse.
     server = Server.find(:first)
     b.setup(server.ip, server.username, server.password ,array_of_ips)
-    
+        
     # get a nested array with key 'ip' and values in an array with [bytes in, bytes out, download speed, upload speed]
     network_data = b.sort_traffic_and_speed(:download).reverse
-    # creates a nested array with network_data + email
-    @network = network_data.map {|ip,data| [ip,data+hash_of_emails[ip]]}
+        
+    # creates a nested array with network_data + email    
+    @network = network_data.map do |ip,data|
+                 email = hash_of_emails[ip] == nil ? ["unknown@email.com"] : hash_of_emails[ip]
+                 [ip,data+email]
+               end
   end
 end
